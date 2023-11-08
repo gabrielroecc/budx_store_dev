@@ -1,0 +1,29 @@
+
+<div class="collection_banner" style="background-image: url({{ collection.image | img_url: '1024x' }});">
+    <h1 class="text-3xl text-center font-medium text-white">
+        {{collection.title}}
+        <div class="breadcrumb">
+            <a class="text-sm text-white" href="/">Home</a> <span class="text-sm text-white"> {{ collection.title }}  </span>
+        </div>
+    </h1>
+</div>
+
+
+<div class="container flex align-center justify-center ">
+    <div>
+        {% render 'collection-filter' %}
+        {% render 'new-product' %}
+    </div>
+    {% paginate collection.products by 12 %}
+       <div class="flex align-center my-20	 justify-center flex-wrap w-full gap-5 max-w-7xl">
+        {% for product in collection.products %}
+            {% render 'product-card', product: product %}
+            {% else %}
+            <p>No products in this colletion</p>
+        {% endfor %}
+       </div>
+        
+
+        {% render 'pagination', pagination: paginate %}
+    {% endpaginate %}
+</div>

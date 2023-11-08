@@ -1,0 +1,114 @@
+
+
+<div class="slide-container w-64	">
+    <h3 class="text-greenButton  block w-full text-xl font-bold	text-left border-b-2 pb-4 mb-4">Featured Products</h3>
+  {%- for product in collections.all.products -%}
+    {%- if product.metafields.custom.new != blank -%}
+      <div class="slide w-64	">
+        <div class="w-64	 	">
+            <div class="w-64	 	">
+                <div class="border bg-white shadow-lg rouded-lg overflow-hidden rounded-2xl">
+                    <a href="{{product.url}}">
+                        {% if product.images.size > 0 %}
+                            <div class="h-80 overflow-hidden relative product_card_image_wrapper">
+                                <img class="w-full h-80 object-cover transition duration-1000 ease-in-out hover:scale-105 transform product-image" src="{{product.images.first | img_url: 'medium'}}" alt="{{product.images.first.alt}}">
+                                {% if product.images.size > 1 %}
+                                    <img class="w-full h-80 object-cover transition duration-1000 ease-in-out hover:scale-105 transform product-image-hover" src="{{product.images[1] | img_url: 'medium'}}" alt="{{product.images[1].alt}}" style="display: none;">
+                                {% endif %}
+                                <div class="variants_wrapper absolute">
+                                    {% for variant in product.variants %}
+                                        {% if variant.title != "Default Title"%}
+                                          <a class="text-gray-700 uppercase font-medium" href="{{product.url}}">{{variant.title}}</a>
+                                        {% endif %}
+                                    {% endfor %}                                      
+                                </div>
+                            </div>
+                        {% endif %}
+                    </a>
+                    <div class="flex flex-col p-4 justify-center gap-2 ">
+                        <span class="text-sm text-gray-400 text-center mb-4">{{product.vendor}}</span>
+                        <a class="text-greenButton  text-xl font-bold	text-center" href="{{product.url}}">{{product.title}}</a>
+                        <p class="text-gray-500 font-bold	text-center">{{product.price | money}}</p>
+            
+                        <form class="text-center" method="post" action="/cart/add">
+                            <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
+                            <input type="submit" class="text-greenButton cursor-pointer"value="Add to cart" class="btn" />
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    {%- endif -%}
+  {%- endfor -%}
+</div>
+<div class="buttons_wrapper w-64	">
+    <button id="prev-button"><</button>
+    <button id="next-button">></button>    
+</div>
+    
+
+<script>
+    document.querySelectorAll('.product_card_image_wrapper').forEach(function(wrapper) {
+        wrapper.addEventListener('mouseover', function() {
+            var hoverImage = this.querySelector('.product-image-hover');
+            if (hoverImage) {
+                this.querySelector('.product-image').style.display = 'none';
+                hoverImage.style.display = 'block';
+            }
+        });
+        wrapper.addEventListener('mouseout', function() {
+            var hoverImage = this.querySelector('.product-image-hover');
+            if (hoverImage) {
+                this.querySelector('.product-image').style.display = 'block';
+                hoverImage.style.display = 'none';
+            }
+        });
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+    const slideContainer = document.querySelector(".slide-container");
+    const slides = document.querySelectorAll(".slide");
+    const prevButton = document.getElementById("prev-button");
+    const nextButton = document.getElementById("next-button");
+    let currentSlide = 0;
+
+    // Função para atualizar a exibição dos slides
+    function updateSlides() {
+      slides.forEach((slide, index) => {
+        if (index === currentSlide) {
+          slide.style.display = "block";
+        } else {
+          slide.style.display = "none";
+        }
+      });
+    }
+
+    // Função para avançar para o próximo slide
+    function nextSlide() {
+      if (currentSlide < slides.length - 1) {
+        currentSlide++;
+      } else {
+        currentSlide = 0;
+      }
+      updateSlides();
+    }
+
+    // Função para voltar para o slide anterior
+    function prevSlide() {
+      if (currentSlide > 0) {
+        currentSlide--;
+      } else {
+        currentSlide = slides.length - 1;
+      }
+      updateSlides();
+    }
+
+    // Adicionar manipuladores de eventos aos botões de navegação
+    nextButton.addEventListener("click", nextSlide);
+    prevButton.addEventListener("click", prevSlide);
+
+    // Inicializar a exibição dos slides
+    updateSlides();
+  });
+</script>

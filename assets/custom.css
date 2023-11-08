@@ -1,0 +1,160 @@
+body {
+	overflow-x: hidden;
+}
+.container {
+	width: 100%;
+	max-width: 1440px;
+	margin: 0 auto;
+	padding: 0 20px;
+}
+.login_wrapper {
+	position: relative;
+}
+.icon_user {
+	cursor: pointer;
+}
+.login_register_option {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	justify-content: start;
+	gap: 20px;
+	padding: 40px;
+	position: absolute;
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+	right: 0;
+	top: 50px;
+	border-radius: 12px;
+	opacity: 0;
+	pointer-events: none;
+	transition: 0.4s;
+}
+.login_register_option.active {
+	opacity: 1;
+	pointer-events: all;
+}
+.cart_total_info {
+	display: flex;
+	flex-direction: column;
+}
+.contine_shopping {
+	color: #80be79;
+}
+.checkout_button {
+	padding: 1rem 2rem;
+	background-color: #80be79;
+	width: 100%;
+}
+.cart_side {
+	right: -100%;
+	transition: 0.4s;
+}
+.cart_side.active {
+	right: 0;
+}
+/* Estilo para remover as setas em navegadores modernos */
+input[type="number"] {
+	-webkit-appearance: textfield;
+	-moz-appearance: textfield;
+	appearance: textfield;
+}
+
+/* Estilos adicionais (opcional) para personalizar a aparência do input */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+	appearance: none;
+}
+.glide__slide img {
+	width: 100%;
+}
+.glide__slide {
+	position: relative;
+}
+.slide-content {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+}
+.first_text_slide {
+	font-size: 16px;
+	color: #fff;
+}
+.collection_banner {
+	width: 100%;
+	padding: 200px 0;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+.variants_wrapper {
+	top: 120%;
+	left: 50%;
+	transform: translateX(-50%);
+	display: flex;
+	align-items: center;
+	transition: 0.4s ease-in-out;
+	gap: 10px;
+}
+.variants_wrapper a {
+	padding: 2px 5px;
+	background-color: #80be79;
+	border-radius: 2px;
+	color: #fff;
+}
+.variants_wrapper a:first-of-type {
+	display: none;
+}
+.product_card_image_wrapper:hover .variants_wrapper {
+	top: 80%;
+}
+/* Estilizando as caixas de seleção customizadas */
+.custom-checkbox input[type="checkbox"] {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	width: 20px; /* Ajuste o tamanho da caixa de seleção conforme necessário */
+	height: 20px; /* Ajuste o tamanho da caixa de seleção conforme necessário */
+	border: 2px solid #000; /* Cor da borda da caixa de seleção */
+	border-radius: 50%; /* Tornando a caixa de seleção redonda */
+	outline: none;
+	cursor: pointer;
+	margin-right: 5px; /* Espaçamento à direita da caixa de seleção */
+}
+
+/* Estilizando as caixas de seleção customizadas quando marcadas */
+.custom-checkbox input[type="checkbox"]:checked {
+	background-color: #000; /* Cor de preenchimento quando a caixa de seleção está marcada */
+	border-color: #000; /* Cor da borda quando a caixa de seleção está marcada */
+}
+
+/* Estilizando o rótulo (label) das caixas de seleção */
+.custom-checkbox label {
+	display: flex;
+	align-items: center;
+}
+
+/* Espaçamento à direita do rótulo das caixas de seleção */
+.custom-checkbox label::after {
+	content: " "; /* Adicione um espaço em branco após o rótulo */
+	margin-left: 5px; /* Espaçamento à direita do rótulo */
+}
+.buttons_wrapper {
+	display: flex;
+	justify-content: center;
+	gap: 2rem;
+	align-items: center;
+	margin-top: 1rem;
+}
+#prev-button,
+#next-button {
+	width: 4rem;
+	height: 4rem;
+	background-color: #80be79;
+	border-radius: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #fff;
+	font-weight: 700;
+}
