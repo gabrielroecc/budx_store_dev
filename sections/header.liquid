@@ -4,7 +4,7 @@
         <div class="flex justify-between items-center py-6 md:justify-between md:space-x-10">
             <!-- STORE NAME / STORE LOGO -->
             <div class="flex justify-start lg:flex-1 truncate">
-                <a href="/" class="text-xl font-bold truncate">{{ shop.name }}</a>
+                <a href="/" class="text-xl font-bold truncate"><img class=" w-24	" src="{{ 'logobudx.svg' |  asset_url }}" alt=""></a>
             </div>
 
             <div class="-mr-2 -my-2 ml-3 lg:hidden">
@@ -98,7 +98,7 @@
                     <p id="subtotal" class="text-2xl">{{ cart.total_price | money }}</p>
                     <div class="flex flex-col justify-center items-center gap-4 mt-8 font-medium">
                         <button class="checkout_button text-white" type="submit" name="checkout">Checkout</button>
-                        <a class="text-greenButton continue_shopping" href="{{ routes.all_products_collection_url }}">Continue Shopping</a>
+                        <a class="text-purpleCustom continue_shopping" href="{{ routes.all_products_collection_url }}">Continue Shopping</a>
                     </div>
                 </div>
             </form>
@@ -109,7 +109,7 @@
     <div class="cart_side bg-white z-20 shadow-lg h-screen absolute top-0 p-20">
         <div>
             <h1 class="text-2xl font-medium mb-6">Your cart is empty</h1>
-            <a class="text-greenButton continue_shopping" href="{{ routes.all_products_collection_url }}">Continue Shopping</a>
+            <a class="text-purpleCustom continue_shopping" href="{{ routes.all_products_collection_url }}">Continue Shopping</a>
         </div>
 {% endif %}
                 </div>

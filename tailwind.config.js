@@ -10,7 +10,7 @@ module.exports = {
 	theme: {
 		extend: {
 			colors: {
-				greenButton: "#80be79",
+				purpleCustom: "#6C3B8C",
 			},
 		},
 	},
